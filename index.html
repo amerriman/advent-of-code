@@ -1,13 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <meta charset="utf-8">
     <title>Advento of code</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="main.css">
   </head>
   <body>
-  <h2>Advent of Code</h2>
+    <h2>Advent of Code</h2>
 
+    <form>
+        <div class="form-group">
+          <label for="input">Data and stuff</label>
+          <input type="text" class="form-control" id="input" placeholder="Put some data here..." name="input" required>
+        </div>
 
+        <button type="submit" class="btn btn-success" id="get-data">GO!</button>
+      </form>
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="dom.js"></script>
     <script src="advent.js" type="text/javascript"></script>
 
   </body>
 </html>
+
