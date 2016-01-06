@@ -8,7 +8,8 @@ $(document).ready(function() {
     // var paper = calculateWrapping(boxes);
     // var ribbon = calculateRibbon(boxes);
 
-    var houses = findHouses(input);
+    // var houses = findHouses(input);
+    var houses = findHousesAgain(input);
     // console.log(input, "input");
 
   });
