@@ -1,5 +1,7 @@
 //-------------------------------//
+//                               //
 // --- Day 1: Not Quite Lisp --- //
+//                               //
 //-------------------------------//
 
 // Santa was hoping for a white Christmas, but his weather machine's "snow" function is powered by stars, and he's fresh out! To save Christmas, he needs you to collect fifty stars by December 25th.
@@ -81,7 +83,9 @@ function getPosition(input){
 
 
 //--------------------------------------------------//
+//                                                  //
 // --- Day 2: I Was Told There Would Be No Math --- //
+//                                                  //
 //--------------------------------------------------//
 
 
@@ -150,9 +154,77 @@ function calculateRibbon(array){
   return totalRibbon;
 }
 
-// correct. total ribbon = 3842356
+// correct. total ribbon = 3,842,356
 
 
+//-------------------------------------------------------//
+//                                                       //
+// --- Day 3: Perfectly Spherical Houses in a Vacuum --- //
+//                                                       //
+//-------------------------------------------------------//
+
+
+// Santa is delivering presents to an infinite two-dimensional grid of houses.
+
+// He begins by delivering a present to the house at his starting location, and then an elf at the North Pole calls him via radio and tells him where to move next. Moves are always exactly one house to the north (^), south (v), east (>), or west (<). After each move, he delivers another present to the house at his new location.
+
+// However, the elf back at the north pole has had a little too much eggnog, and so his directions are a little off, and Santa ends up visiting some houses more than once. How many houses receive at least one present?
+
+// For example:
+
+// > delivers presents to 2 houses: one at the starting location, and one to the east.
+// ^>v< delivers presents to 4 houses in a square, including twice to the house at his starting/ending location.
+// ^v^v^v^v^v delivers a bunch of presents to some very lucky children at only 2 houses.
+
+
+//assign each move to a number on the x/y axis.  If the move is in the array, don't count it.  If it isn't, add to the array and count it.
+function countHouses(array){
+  var count = 1;
+  var visitedHouses = array.sort();
+  console.log(visitedHouses, 'visitedHouses');
+  console.log(array.length);
+
+  for (var i = 1; i < visitedHouses.length; i++) {
+    if(visitedHouses[i] != visitedHouses[i-1]){
+      count++;
+    }
+  }
+  console.log(count, 'COUNT');
+}
+
+function findHouses(array){
+  var house;
+  var houses = ['00'];
+  var x = 0;
+  var y = 0;
+
+  for (var i = 0; i < array.length; i++) {
+    // debugger
+    if (array[i]=== '^'){
+      y += 1;
+      house = x.toString() + y.toString();
+      // console.log(house, "house");
+      houses.push(house);
+    } else if (array[i]=== 'v'){
+      y -= 1;
+      house = x.toString() + y.toString();
+      // console.log(house, "house");
+      houses.push(house);
+    } else if (array[i]=== '>'){
+      x += 1;
+      house = x.toString() + y.toString();
+      // console.log(house, "house");
+      houses.push(house);
+    } else if (array[i]=== '<'){
+      x -= 1;
+      house = x.toString() + y.toString();
+      // console.log(house, "house");
+      houses.push(house);
+    }
+  }
+  // console.log(houses.sort())
+  countHouses(houses);
+}
 
 
 

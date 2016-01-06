@@ -4,10 +4,12 @@ $(document).ready(function() {
   $("#get-data").on("click", function () {
     var input = $('#input').val();
 
-    var boxes = getDimensions(input);
+    // var boxes = getDimensions(input);
     // var paper = calculateWrapping(boxes);
-    var ribbon = calculateRibbon(boxes);
-    console.log(ribbon, "ribbon");
+    // var ribbon = calculateRibbon(boxes);
+
+    var houses = findHouses(input);
+    // console.log(input, "input");
 
   });
 
