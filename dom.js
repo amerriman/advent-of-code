@@ -4,8 +4,10 @@ $(document).ready(function() {
   $("#get-data").on("click", function () {
     var input = $('#input').val();
 
-
-    getDimensions(input);
+    var boxes = getDimensions(input);
+    // var paper = calculateWrapping(boxes);
+    var ribbon = calculateRibbon(boxes);
+    console.log(ribbon, "ribbon");
 
   });
 

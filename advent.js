@@ -1,4 +1,6 @@
-// --- Day 1: Not Quite Lisp ---
+//-------------------------------//
+// --- Day 1: Not Quite Lisp --- //
+//-------------------------------//
 
 // Santa was hoping for a white Christmas, but his weather machine's "snow" function is powered by stars, and he's fresh out! To save Christmas, he needs you to collect fifty stars by December 25th.
 
@@ -78,7 +80,10 @@ function getPosition(input){
 //result (position) = 1797
 
 
-// --- Day 2: I Was Told There Would Be No Math ---
+//--------------------------------------------------//
+// --- Day 2: I Was Told There Would Be No Math --- //
+//--------------------------------------------------//
+
 
 // The elves are running low on wrapping paper, and so they need to submit an order for more. They have a list of the dimensions (length l, width w, and height h) of each present, and only want to order exactly as much as they need.
 
@@ -92,12 +97,7 @@ function getPosition(input){
 
 
 
-//parseInt and forEach  loop through array, for each position, split it into separate numbers, add it all up, and add to a running total.  need like a mini function to determine the shortest side.
-
-//"20x3x11", "15x27x5", "6x29x7"
-
-
-
+//input all the dimensions, parse them to integers, and sort them low-high.
 function getDimensions(input){
   var packages = input.split(' ');
   //to hold the array of actual dimensions
@@ -115,15 +115,42 @@ function getDimensions(input){
     });
     dimensions.push(container.sort(function(a, b){return a-b;}));
   });
-
-  console.log(dimensions[0], "newArry");
-  console.log(dimensions[1], "newArry");
-  console.log(dimensions[2], "newArry");
   return dimensions;
-
 }
 
 
+function calculateWrapping(array){
+  var totalPaper = 0;
+  array.forEach(function(box){
+    totalPaper += 2*box[0]*box[1] + 2*box[1]*box[2] + 2*box[2]*box[0] + box[0]*box[1];
+  });
+  return totalPaper;
+}
+
+//correct - total square feet = 1,606,483
+
+
+// --- Part Two ---
+
+// The elves are also running low on ribbon. Ribbon is all the same width, so they only have to worry about the length they need to order, which they would again like to be exact.
+
+// The ribbon required to wrap a present is the shortest distance around its sides, or the smallest perimeter of any one face. Each present also requires a bow made out of ribbon as well; the feet of ribbon required for the perfect bow is equal to the cubic feet of volume of the present. Don't ask how they tie the bow, though; they'll never tell.
+
+// For example:
+
+// A present with dimensions 2x3x4 requires 2+2+3+3 = 10 feet of ribbon to wrap the present plus 2*3*4 = 24 feet of ribbon for the bow, for a total of 34 feet.
+// A present with dimensions 1x1x10 requires 1+1+1+1 = 4 feet of ribbon to wrap the present plus 1*1*10 = 10 feet of ribbon for the bow, for a total of 14 feet.
+// How many total feet of ribbon should they order?
+
+function calculateRibbon(array){
+  var totalRibbon = 0;
+  array.forEach(function(box){
+    totalRibbon += 2 * box[0] + 2 * box[1] + box[0]*box[1]*box[2];
+  });
+  return totalRibbon;
+}
+
+// correct. total ribbon = 3842356
 
 
 
